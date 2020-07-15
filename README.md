@@ -1,4 +1,22 @@
-# An application with
+<p align="center">
+  <a href="https://nodejs.org/en/" target="_blank">
+    <img alt="Node.js version" src="https://img.shields.io/badge/node-v13.8.0-brightgreen">
+  </a>
+  <a>
+    <img alt="Eslint style guide" src="https://img.shields.io/badge/eslint-airbnb-red">
+  </a>
+  <a href="https://www.linkedin.com/in/danilocolasso/" target="_blank">
+    <img alt="Made by Danilo Colasso" src="https://img.shields.io/badge/made%20by-Danilo%20Colasso-7159C1">
+  </a>
+  <a href="LICENSE.md" target="_blank">
+    <img alt="LICENSE" src="https://img.shields.io/github/license/danilocolasso/laravel-react-admin?color=7159C1">
+  </a>
+</p>
+
+
+<h1 align="center">
+    An application with
+</h1>
 <p align="center">
     <a href="https://github.com/laravel/laravel" target="_blank">
         <img height="120" src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400">
@@ -10,7 +28,7 @@
 
 
 ## Before install
-- Make sure you have installed Docker Desktop. If you don't, follow the <a href="https://www.docker.com/get-started" target="_blank">Get Started with Docker</a>.
+Make sure you have installed Docker Desktop. If you don't, follow the <a href="https://www.docker.com/get-started" target="_blank">Get Started with Docker</a>.
 
 ## Installation guide
 
@@ -52,6 +70,9 @@ And to compile your assets:
 
     $ npm run dev 
     
+### The application will be available at
+http://localhost/
+
 #### Defaut credentials
 
 >**user:** admin@admin.com
@@ -79,3 +100,12 @@ When deploying Passport to your production servers for the first time, you will 
     
 ### Optimizing Route Loading
     $ docker-compose exec app php artisan route:cache
+
+## How to contribute
+- Create a branch with your feature `$ git checkout -b my-feature`
+- Commit your changes `$ git commit -m "Add my feature"`
+- Push to your branch `$ git push origin my-feature`    
+
+<h4 align="center">
+    Made with ♡ by <a href="https://www.linkedin.com/in/danilocolasso/" target="_blank">Danilo Colasso</a>
+</h4>
