@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Form, Input, Button } from 'antd'
 
-import Layout from '../../components/Layout'
+import Layout from '~/components/Layout'
 
 const validateMessages = {
   required: '${label} é obrigatório!',

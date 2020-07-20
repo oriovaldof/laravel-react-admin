@@ -9,8 +9,8 @@ import {
     ProfileOutlined
 } from '@ant-design/icons'
 
-import { useAuth } from '../../contexts/AuthProvider'
-import { appContext } from '../../contexts/AppProvider'
+import { useAuth } from '~/contexts/AuthProvider'
+import { appContext } from '~/contexts/AppProvider'
 
 function Header(props) {
     const AntHeader = AntLayout.Header

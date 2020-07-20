@@ -4,7 +4,7 @@ import { Form, Input, Button, Checkbox, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { Layout, Card, Col, Row } from 'antd';
 
-import {useAuth} from '../../contexts/AuthProvider'
+import {useAuth} from '~/contexts/AuthProvider'
 
 const buttonStyle = {
     width: '100%'

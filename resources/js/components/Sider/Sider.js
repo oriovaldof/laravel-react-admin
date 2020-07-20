@@ -7,9 +7,9 @@ import {
   UsergroupAddOutlined
 } from '@ant-design/icons'
 
-import {appContext} from '../../contexts/AppProvider'
-import { useAuth } from '../../contexts/AuthProvider'
-import { ROLES } from '../../variables'
+import {appContext} from '~/contexts/AppProvider'
+import { useAuth } from '~/contexts/AuthProvider'
+import { ROLES } from '~/variables'
 
 function Sider(props) {
     const AntSider = AntLayout.Sider

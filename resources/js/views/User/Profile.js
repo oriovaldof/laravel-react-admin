@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { useAuth } from '../../contexts/AuthProvider'
+import { useAuth } from '~/contexts/AuthProvider'
 
-import Layout from '../../components/Layout'
-import UserForm from '../../components/User/UserForm'
+import Layout from '~/components/Layout'
+import UserForm from '~/components/User/UserForm'
 import { message } from 'antd'
 
-import { updateProfile } from '../../services/UserService'
-import { appContext } from '../../contexts/AppProvider'
+import { updateProfile } from '~/services/UserService'
+import { appContext } from '~/contexts/AppProvider'
 
 function Profile() {
   const { user, updateUser } = useAuth()

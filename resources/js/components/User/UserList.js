@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 
 import { Row, Table, Tag, Modal, Button, Form, Popconfirm, message } from 'antd'
 import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons'
-import { ROLES } from '../../variables'
+import { ROLES } from '~/variables'
 
 import UserForm from './UserForm'
-import LoadingContent from '../Loading/LoadingContent'
-import { appContext } from '../../contexts/AppProvider'
-import { useAuth } from '../../contexts/AuthProvider'
+import LoadingContent from '~/components/Loading/LoadingContent'
+import { appContext } from '~/contexts/AppProvider'
+import { useAuth } from '~/contexts/AuthProvider'
 
-import * as service from '../../services/UserService'
+import * as service from '~/services/UserService'
 
 function UserList() {
   const [form] = Form.useForm()

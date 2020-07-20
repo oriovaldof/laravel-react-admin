@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { Form, Input, Select, Button } from 'antd'
 
-import { ROLES } from '../../variables'
+import { ROLES } from '~/variables'
 
 const validateMessages = {
   required: '${label} é obrigatório!',
