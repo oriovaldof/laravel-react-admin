@@ -14,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['middleware' => ['json.response']], function() {
+
+    Route::middleware('auth:api')->get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    //Public routes
+//    Route::post('/register', 'AuthController@register')->name('api.register');
+    Route::post('/login', 'AuthController@login')->name('api.login');
+
+    //Private routes
+    Route::middleware('auth:api')->group(function() {
+        Route::post('/', 'HomeController@index')->name('home');
+        Route::get('/logout', 'AuthController@logout')->name('logout');
+    });
 });
