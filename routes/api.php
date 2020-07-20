@@ -29,5 +29,12 @@ Route::group(['middleware' => ['json.response']], function() {
     Route::middleware('auth:api')->group(function() {
         Route::post('/', 'HomeController@index')->name('home');
         Route::get('/logout', 'AuthController@logout')->name('logout');
+
+        //Only ADMIN access
+        Route::middleware('check.user.role:' . \App\Role\UserRole::ROLE_ADMIN)->group(function() {
+            Route::apiResource('/users', 'UserController');
+        });
+
+        Route::put('/profile', 'UserController@updateProfile');
     });
 });
