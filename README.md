@@ -57,18 +57,18 @@ To protect your users data.
 It will improve a lot the performance.
     
 ### Migrate database
-    $ docker--compose exec app php artisan passport:install
-    
     $ docker-compose exec app php artisan migrate --seed
+    
+    $ docker-compose exec app php artisan passport:install
 Your database and schema will be created and populated with some demo data automatically.
 The `passport:install` command will create encryption keys needed to generate secure access token.
 
 ### Install Node Packages
-    $ npm install
+    $ docker-compose exec app npm install
     
 And to compile your assets:
 
-    $ npm run dev 
+    $ docker-compose exec app npm run dev 
     
 ### The application will be available at
 http://localhost/
