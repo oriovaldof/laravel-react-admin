@@ -16,3 +16,5 @@ dbdata
 /public/js
 /public/css
 /resources/js/.vscode
+/resources/js/public/js
+/resources/js/public/css
