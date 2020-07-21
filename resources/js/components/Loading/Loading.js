@@ -2,7 +2,7 @@ import React from 'react'
 import { LoadingOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 
-function Loading() {
+function Loading () {
   const LoadingContainer = styled.div`
     background-color: rgba(0,0,0,0.6);
     color: #fff;

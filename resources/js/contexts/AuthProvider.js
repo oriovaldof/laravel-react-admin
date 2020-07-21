@@ -1,100 +1,96 @@
 import React, {
-    useState, useEffect, createContext, useContext,
+  useState, useEffect, createContext, useContext
 } from 'react'
 import Cookies from 'js-cookie'
 
-import {APP_COOKIES_PREFIX} from '~/variables'
+import { APP_COOKIES_PREFIX } from '~/variables'
 
-import * as auth from  '~/services/AuthService'
+import * as auth from '~/services/AuthService'
 
 const AuthContextData = {
-    pageLoading: true,
-    authenticated: null,
-    user: {},
-    login: async function() {}
+  pageLoading: true,
+  authenticated: null,
+  user: {},
+  login: async function () {}
 }
 
 const AuthContext = createContext(AuthContextData)
 
-function AuthProvider({children}) {
-    const [token, setToken] = useState(null)
-    const [user, setUser] = useState(null)
-    const [pageLoading, setPageLoading] = useState(true)
+function AuthProvider ({ children }) {
+  const [user, setUser] = useState(null)
+  const [pageLoading, setPageLoading] = useState(true)
 
-    useEffect(() => {
-        (async () => {
-            await loadCookies()
-        })()
-    }, [])
+  useEffect(() => {
+    (async () => {
+      await loadCookies()
+    })()
+  }, [])
 
-    const login = async (values) => {
-        const response = await auth.login(values)
+  const login = async (values) => {
+    const response = await auth.login(values)
 
-        if(response.data.status === 'success') {
-            setToken(response.data.access_token)
-            setUser(response.data.user)
-            await saveCookies(response.data)
-        }
-
-        return response
+    if (response.data.status === 'success') {
+      setUser(response.data.user)
+      await saveCookies(response.data)
     }
 
-    const logout = async () => {
-        const response = await auth.logout()
+    return response
+  }
 
-        if(response.data.status === 'success') {
-            setToken(null)
-            setUser(null)
-            await Cookies.remove(APP_COOKIES_PREFIX + 'token')
-            await Cookies.remove(APP_COOKIES_PREFIX + 'user')
-            setAxiosToken(null)
-        }
+  const logout = async () => {
+    const response = await auth.logout()
 
-        return response
+    if (response.data.status === 'success') {
+      setUser(null)
+      await Cookies.remove(APP_COOKIES_PREFIX + 'token')
+      await Cookies.remove(APP_COOKIES_PREFIX + 'user')
+      setAxiosToken(null)
     }
 
-    const saveCookies = async (data) => {
-        if(data.access_token && data.user) {
-            await Cookies.set(APP_COOKIES_PREFIX + 'token', data.access_token, {expires: 7})
-            await saveUserCookies(data.user)
-            setAxiosToken(data.access_token)
-        }
+    return response
+  }
+
+  const saveCookies = async (data) => {
+    if (data.access_token && data.user) {
+      await Cookies.set(APP_COOKIES_PREFIX + 'token', data.access_token, { expires: 7 })
+      await saveUserCookies(data.user)
+      setAxiosToken(data.access_token)
+    }
+  }
+
+  const saveUserCookies = async userData => {
+    return Cookies.set(APP_COOKIES_PREFIX + 'user', userData, { expires: 7 })
+  }
+
+  const loadCookies = async () => {
+    const storedToken = await Cookies.get(APP_COOKIES_PREFIX + 'token')
+    const storedUser = await Cookies.get(APP_COOKIES_PREFIX + 'user')
+    if (storedToken && storedUser) {
+      setUser(JSON.parse(storedUser))
+      setAxiosToken(storedToken)
+    }
+    setPageLoading(false)
+  }
+
+  const setAxiosToken = (accessToken) => {
+    window.axios.defaults.headers.Authorization = `Bearer ${accessToken}`
+  }
+
+  const updateUser = async values => {
+    const userData = {
+      ...user,
+      name: values.name
     }
 
-    const saveUserCookies = async userData => {
-        return Cookies.set(APP_COOKIES_PREFIX + 'user', userData, {expires: 7})
-    }
+    setUser(userData)
+    return saveUserCookies(userData)
+  }
 
-    const loadCookies = async () => {
-        const storedToken = await Cookies.get(APP_COOKIES_PREFIX + 'token')
-        const storedUser =  await Cookies.get(APP_COOKIES_PREFIX + 'user')
-        if(storedToken && storedUser) {
-            setUser(JSON.parse(storedUser))
-            setToken(storedToken)
-            setAxiosToken(storedToken)
-        }
-        setPageLoading(false)
-    }
-
-    const setAxiosToken = (access_token) => {
-        window.axios.defaults.headers['Authorization'] = `Bearer ${access_token}`
-    }
-
-    const updateUser = async values => {
-        let userData = {
-            ...user,
-            name: values.name
-        }
-
-        setUser(userData)
-        return saveUserCookies(userData)
-    }
-
-    return (
-        <AuthContext.Provider value={{ authenticated: !!user, user, updateUser, pageLoading, login, logout }}>
-            { children }
-        </AuthContext.Provider>
-    )
+  return (
+    <AuthContext.Provider value={{ authenticated: !!user, user, updateUser, pageLoading, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 export const useAuth = () => useContext(AuthContext)

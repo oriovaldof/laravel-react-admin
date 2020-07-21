@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export const all = async () => {
   return axios.get('/api/users')
 }
@@ -8,7 +9,7 @@ export const destroy = async user => {
 
 export const store = async user => {
   user.roles = [user.roles]
-  return axios.post(`/api/users/`, user)
+  return axios.post('/api/users/', user)
 }
 
 export const update = async user => {

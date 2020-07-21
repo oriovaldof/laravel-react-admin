@@ -2,7 +2,7 @@ import React from 'react'
 import { LoadingOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 
-function LoadingContent() {
+function LoadingContent () {
   const LoadingContainer = styled.div`
     position: absolute;
     left: 0;

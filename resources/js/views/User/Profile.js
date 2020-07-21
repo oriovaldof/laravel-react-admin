@@ -9,7 +9,7 @@ import { message } from 'antd'
 import { updateProfile } from '~/services/UserService'
 import { appContext } from '~/contexts/AppProvider'
 
-function Profile() {
+function Profile () {
   const { user, updateUser } = useAuth()
   const { loading } = appContext()
 
@@ -27,13 +27,13 @@ function Profile() {
         error.forEach(value => {
           message.error(value)
         })
-      });
+      })
     }
   }
 
   return (
     <Layout>
-      <UserForm user={user} onFinish={onFinish}/>
+      <UserForm user={user} onFinish={onFinish} />
     </Layout>
   )
 }

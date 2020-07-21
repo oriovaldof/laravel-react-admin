@@ -3,10 +3,10 @@ import React from 'react'
 import Layout from '~/components/Layout'
 import UserList from '~/components/User/UserList'
 
-function Users() {
+function Users () {
   return (
     <Layout>
-      <UserList/>
+      <UserList />
     </Layout>
   )
 }
