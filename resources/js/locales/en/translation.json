@@ -1,0 +1,82 @@
+{
+  "common": {
+    "loading": "Loading",
+    "add": "Add",
+    "create": "Create",
+    "edit": "Edit",
+    "update": "Update",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "save": "Save",
+    "yes": "Yes",
+    "no": "No",
+    "message": {
+      "success": {
+        "created": " successfully created!",
+        "edited": " successfully edited!",
+        "deleted": " successfully deleted!",
+        "logged-out": "You have been successfully logged out!"
+      },
+      "error": {
+        "default": "An error has occurred. Please try again later.",
+        "logged-out": "An error occurred while trying to logout. Please try again later."
+      },
+      "confirm": "Are you sure you want to {{ action }} {{ this }} {{ entity }}?"
+    }
+  },
+  "user": {
+    "title": "User",
+    "name": "Name",
+    "this": "this",
+    "email": "E-mail",
+    "password": "Password",
+    "password-confirmation": "Password Confirmation",
+    "role": {
+      "label": "Role",
+      "ROLE_ADMIN": "Admin",
+      "ROLE_MANAGEMENT": "Manager",
+      "ROLE_ACCOUNT_MANAGEMENT": "Account Manager",
+      "ROLE_SUPPORT": "Support"
+    },
+    "error": {
+      "required": "{{ label }} is required!",
+      "types": {
+        "email": "This is not a valid e-mail!"
+      },
+      "password-confirmation": "Passwords do not match!"
+    }
+  },
+  "login" : {
+    "title": "Login",
+    "remember-me": "Remember me",
+    "forgot-password": "Forgot password",
+    "login": "Log in",
+    "or": "Or",
+    "register": "Or <a>Register now!</a>",
+    "input": {
+      "email": {
+        "label": "E-mail",
+        "error": {
+          "required": "Please input your E-mail!"
+        }
+      },
+      "password": {
+        "label": "Password",
+        "error": {
+          "required": "Please input your Password!"
+        }
+      }
+    }
+  },
+  "header": {
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "sider": {
+    "home": "Home",
+    "users": "Users"
+  },
+  "footer": {
+    "made-with-love": "Made with <heart/> by "
+  }
+}

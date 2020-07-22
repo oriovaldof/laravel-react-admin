@@ -11,6 +11,7 @@ import { appContext } from '~/contexts/AppProvider'
 import { useAuth } from '~/contexts/AuthProvider'
 
 import * as service from '~/services/UserService'
+import { useTranslation } from 'react-i18next'
 
 function UserList () {
   const [form] = Form.useForm()
@@ -23,13 +24,14 @@ function UserList () {
     user: null
   })
   const authUser = useAuth().user
+  const { t } = useTranslation(['user', 'common'])
 
   const axiosError = e => {
     loading(false)
     const errors = e.response.data.errors
     Object.entries(errors).forEach(([key, error]) => {
       error.forEach(value => {
-        message.error(value)
+        message.error(t(value))
       })
     })
   }
@@ -38,14 +40,14 @@ function UserList () {
     create: () => {
       setModal({
         visible: true,
-        title: 'Criar usuário',
+        title: t('common:create') + ' ' + t('title'),
         data: null
       })
     },
     edit: user => {
       setModal({
         visible: true,
-        title: 'Editar usuário',
+        title: t('common:edit') + ' ' + t('title'),
         user: user
       })
     },
@@ -60,7 +62,7 @@ function UserList () {
           visible: false
         })
         form.resetFields()
-        message.success('Usuário criado com sucesso!')
+        message.success(t('user:title') + t('common:message.success.created'))
       } catch (e) {
         return axiosError(e)
       }
@@ -75,7 +77,7 @@ function UserList () {
           ...modal,
           visible: false
         })
-        message.success('Usuário alterado com sucesso!')
+        message.success(t('user:title') + t('common:message.success.edited'))
       } catch (e) {
         return axiosError(e)
       }
@@ -86,7 +88,7 @@ function UserList () {
         await service.destroy(user)
         loading(false)
         setUsers(users.filter(u => u.id !== user.id))
-        message.success('Usuário Excluído com sucesso!')
+        message.success(t('user:title') + t('common:message.success.deleted'))
       } catch (e) {
         return axiosError(e)
       }
@@ -95,25 +97,21 @@ function UserList () {
 
   const columns = [
     {
-      title: 'Nome',
+      title: t('name'),
       dataIndex: 'name',
       key: 'name'
     },
     {
-      title: 'E-mail',
+      title: t('email'),
       dataIndex: 'email',
       key: 'email'
     },
     {
-      title: 'Tipo',
+      title: t('role.label'),
       dataIndex: 'roles',
       key: 'roles',
       render: roles => {
-        return (
-          roles.includes(ROLES.admin)
-            ? <Tag color='processing'>Administrador</Tag>
-            : <Tag colr='default'>Normal</Tag>
-        )
+        return <Tag color={(roles.includes(ROLES.admin) ? 'processing' : 'default')}>{t('role.' + roles)}</Tag>
       }
     },
     {
@@ -121,14 +119,18 @@ function UserList () {
       render: user => (
         user.id === 1 ? null // First admin user can't be modified
           : <>
-            <a style={{ marginRight: '10px' }} onClick={() => { actions.edit(user) }}><EditOutlined /> Editar</a>
+            <a style={{ marginRight: '10px' }} onClick={() => { actions.edit(user) }}><EditOutlined /> {t('common:edit')}</a>
             <Popconfirm
-              title='Tem certeza que deseja excluir este usuário?'
-              cancelText='Não'
-              okText='Sim'
+              title={t('common:message.confirm', {
+                action: t('common:delete'),
+                this: t('user:this'),
+                entity: t('user:title')
+              })}
+              cancelText={t('common:no')}
+              okText={t('common:yes')}
               onConfirm={() => { actions.destroy(user) }}
             >
-              <a><DeleteOutlined /> Excluir</a>
+              <a><DeleteOutlined /> {t('common:delete')}</a>
             </Popconfirm>
           </>
       )
@@ -164,15 +166,15 @@ function UserList () {
     loadingContent ? <LoadingContent />
       : <>
         <Row justify='end' style={{ marginBottom: 10 }}>
-          <Button onClick={() => { actions.create() }} type='primary'><PlusOutlined /> Adicionar</Button>
+          <Button onClick={() => { actions.create() }} type='primary'><PlusOutlined /> {t('common:add')}</Button>
         </Row>
         <Table columns={columns} dataSource={users} pagination={{ hideOnSinglePage: true, pageSize: 10 }} />
         <Modal
           visible={modal.visible}
           closable={false}
           title={modal.title}
-          cancelText='Cancelar'
-          okText='Salvar'
+          cancelText={t('common:cancel')}
+          okText={t('common:save')}
           onOk={() => { form.submit() }}
           onCancel={() => {
             setModal({

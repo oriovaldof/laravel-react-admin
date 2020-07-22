@@ -5,6 +5,8 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
 import { useAuth } from '~/contexts/AuthProvider'
 
+import { Trans, useTranslation } from 'react-i18next'
+
 const buttonStyle = {
   width: '100%'
 }
@@ -17,6 +19,7 @@ function Login () {
   const history = useHistory()
   const { login } = useAuth()
   const [loading, setLoading] = useState(false)
+  const { t } = useTranslation('login')
 
   const onFinish = values => {
     setLoading(true)
@@ -39,7 +42,7 @@ function Login () {
     <Layout>
       <Row gutter={8} type='flex' justify='center' align='middle' style={{ minHeight: '100vh' }}>
         <Col xs={{ span: 18 }} sm={{ span: 6 }} md={{ span: 5 }} style={{ maxWidth: '300px' }}>
-          <Card title='Login' bordered={false}>
+          <Card title={t('title')} bordered={false}>
             <Form
               name='login-form'
               className='login-form'
@@ -52,42 +55,42 @@ function Login () {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your E-mail!'
+                    message: t('input.email.error.required')
                   }
                 ]}
               >
-                <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder='E-mail' />
+                <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder={t('input.email.label')} />
               </Form.Item>
               <Form.Item
                 name='password'
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your Password!'
+                    message: t('input.password.error.required')
                   }
                 ]}
               >
                 <Input
                   prefix={<LockOutlined className='site-form-item-icon' />}
                   type='password'
-                  placeholder='Password'
+                  placeholder={t('input.password.label')}
                 />
               </Form.Item>
               <Form.Item>
                 <Form.Item name='remember' valuePropName='checked' noStyle>
-                  <Checkbox>Remember me</Checkbox>
+                  <Checkbox>{t('remember-me')}</Checkbox>
                 </Form.Item>
 
                 <a style={{ ...forgotStyle }} href=''>
-                  Forgot password
+                  {t('forgot-password')}
                 </a>
               </Form.Item>
 
               <Form.Item>
                 <Button type='primary' htmlType='submit' id='form-submit' loading={loading} style={{ ...buttonStyle }}>
-                  Log in
+                  {t('login')}
                 </Button>
-                Or <a href=''>register now!</a>
+                <Trans t={t} i18nKey='register' components={{ a: <a href='' /> }} />
               </Form.Item>
             </Form>
           </Card>

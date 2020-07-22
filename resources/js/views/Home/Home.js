@@ -5,7 +5,7 @@ import Layout from '~/components/Layout'
 function Home () {
   return (
     <Layout>
-      Home :)
+      Home ;)
     </Layout>
   )
 }

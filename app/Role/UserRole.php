@@ -12,7 +12,7 @@ class UserRole
 {
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const ROLE_MANAGEMENT = 'ROLE_MANAGEMENT';
-    const ROLE_ACCOUNT_MANAGEMENT = 'ROLE_ACOUNT_MANAGEMENT';
+    const ROLE_ACCOUNT_MANAGEMENT = 'ROLE_ACCOUNT_MANAGEMENT';
     const ROLE_SUPPORT = 'ROLE_SUPPORT';
 
     protected static $roleHierarchy = [

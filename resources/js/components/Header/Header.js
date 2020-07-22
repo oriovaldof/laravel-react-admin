@@ -11,9 +11,11 @@ import {
 
 import { useAuth } from '~/contexts/AuthProvider'
 import { appContext } from '~/contexts/AppProvider'
+import { useTranslation } from 'react-i18next'
 
 function Header (props) {
   const AntHeader = AntLayout.Header
+  const { t } = useTranslation(['header', 'common'])
 
   const location = useLocation()
   const { collapsed } = appContext()
@@ -25,10 +27,10 @@ function Header (props) {
   const handleLogout = () => {
     logout().then(response => {
       if (response.data.status === 'success') {
-        message.success(response.data.message)
+        message.success(t('common:message.success.logged-out'))
         history.push('/login')
       } else {
-        message.error(response.data.message)
+        message.error(t('common:message.error.logged-out'))
       }
     })
   }
@@ -55,8 +57,8 @@ function Header (props) {
           }
         </Menu.Item>
         <Menu.SubMenu icon={avatar} title={user.name.substring(0, nameLimit) + (user.name.length > nameLimit ? '...' : '')} style={{ float: 'right' }}>
-          <Menu.Item key='header:profile' icon={<ProfileOutlined />}><Link to='/profile'>Perfil</Link></Menu.Item>
-          <Menu.Item key='header:logout' onClick={handleLogout} icon={<LogoutOutlined />}>Logout</Menu.Item>
+          <Menu.Item key='header:profile' icon={<ProfileOutlined />}><Link to='/profile'>{t('profile')}</Link></Menu.Item>
+          <Menu.Item key='header:logout' onClick={handleLogout} icon={<LogoutOutlined />}>{t('logout')}</Menu.Item>
         </Menu.SubMenu>
       </Menu>
     </AntHeader>

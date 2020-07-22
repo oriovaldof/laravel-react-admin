@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 function PageLoading () {
+  const { t } = useTranslation('common')
+
   return (
     <div style={{
       position: 'absolute',
@@ -21,7 +24,7 @@ function PageLoading () {
         cursor: 'default'
       }}
       >
-        <span>Loading...</span>
+        <span>{t('loading')}...</span>
       </div>
     </div>
   )

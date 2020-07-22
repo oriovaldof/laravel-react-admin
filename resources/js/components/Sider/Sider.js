@@ -11,6 +11,7 @@ import {
 import { appContext } from '~/contexts/AppProvider'
 import { useAuth } from '~/contexts/AuthProvider'
 import { ROLES } from '~/variables'
+import { useTranslation } from 'react-i18next'
 
 function Sider (props) {
   const AntSider = AntLayout.Sider
@@ -18,6 +19,7 @@ function Sider (props) {
   const location = useLocation()
   const { user } = useAuth()
   const { collapsed } = appContext()
+  const { t } = useTranslation('sider')
 
   const Logo = styled.img.attrs({
     src: '/img/logo.png'
@@ -42,16 +44,16 @@ function Sider (props) {
     <AntSider trigger={null} collapsible collapsed={collapsed.get}>
       <LogoContainer><Logo /></LogoContainer>
       <Menu theme='dark' mode='inline' defaultSelectedKeys={selectedKeys()}>
+        <Menu.Item key='sider:home' icon={<HomeOutlined />}>
+          <Link to='/'>{t('home')}</Link>
+        </Menu.Item>
         {
           user.roles.includes(ROLES.admin)
             ? <Menu.Item key='sider:users' icon={<UsergroupAddOutlined />}>
-              <Link to='/users'>Usuários</Link>
+              <Link to='/users'>{t('users')}</Link>
             </Menu.Item>
             : null
         }
-        <Menu.Item key='sider:home' icon={<HomeOutlined />}>
-          <Link to='/'>Home</Link>
-        </Menu.Item>
       </Menu>
     </AntSider>
   )
