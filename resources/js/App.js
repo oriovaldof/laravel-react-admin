@@ -17,7 +17,8 @@ import translationPtBR from '~/locales/pt-BR/translation.json'
 
 i18next.init({
   interpolation: { escapeValue: false },
-  lng: 'en',
+  lng: navigator.language || navigator.userLanguage || navigator.browserLanguage,
+  load: 'currentOnly',
   fallbackLng: FALLBACK_LANG,
   resources: {
     en: translationEN,
