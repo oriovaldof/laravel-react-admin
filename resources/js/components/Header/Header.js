@@ -12,6 +12,7 @@ import {
 import { useAuth } from '~/contexts/AuthProvider'
 import { appContext } from '~/contexts/AppProvider'
 import { useTranslation } from 'react-i18next'
+import { THEME } from '~/variables'
 
 function Header (props) {
   const AntHeader = AntLayout.Header
@@ -46,15 +47,9 @@ function Header (props) {
 
   return (
     <AntHeader className='site-layout-background' style={{ padding: 0 }}>
-      <Menu theme='light' mode='horizontal' selectable={false} triggerSubMenuAction='click' defaultSelectedKeys={selectedKeys()}>
-        <Menu.Item key='0'>
-          {
-            React.createElement(collapsed.get ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'sider-trigger',
-              onClick: collapsed.toggle
-            }
-            )
-          }
+      <Menu theme={THEME.header} mode='horizontal' selectable={false} triggerSubMenuAction='click' defaultSelectedKeys={selectedKeys()}>
+        <Menu.Item key='0' onClick={() => collapsed.toggle()}>
+          {collapsed.get ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Menu.Item>
         <Menu.SubMenu icon={avatar} title={user.name.substring(0, nameLimit) + (user.name.length > nameLimit ? '...' : '')} style={{ float: 'right' }}>
           <Menu.Item key='header:profile' icon={<ProfileOutlined />}><Link to='/profile'>{t('profile')}</Link></Menu.Item>

@@ -1,60 +1,42 @@
 /* eslint-disable react/jsx-closing-tag-location */
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Layout as AntLayout, Menu } from 'antd'
-import styled from 'styled-components'
-import {
-  HomeOutlined,
-  UsergroupAddOutlined
-} from '@ant-design/icons'
+import React, { useState } from 'react'
+import { Layout as AntLayout, Drawer } from 'antd'
+import SiderMenu from './SiderMenu'
 
 import { appContext } from '~/contexts/AppProvider'
-import { useAuth } from '~/contexts/AuthProvider'
-import { ROLES } from '~/variables'
-import { useTranslation } from 'react-i18next'
+import { THEME } from '~/variables'
 
-function Sider (props) {
+function Sider () {
   const AntSider = AntLayout.Sider
-
-  const location = useLocation()
-  const { user } = useAuth()
+  const [drawer, setDrawer] = useState(false)
   const { collapsed } = appContext()
-  const { t } = useTranslation('sider')
 
-  const Logo = styled.img.attrs({
-    src: '/img/logo.png'
-  })`
-      max-height: 48px;
-      max-width: 100%;
-    `
+  const drawerProps = {
+    placement: 'left',
+    closable: false,
+    onClose: () => collapsed.toggle(),
+    visible: (drawer && !collapsed.get),
+    bodyStyle: { padding: 0 },
+    drawerStyle: THEME.sider === 'dark' ? {
+      color: 'rgba(255, 255, 255, 0.65)',
+      background: '#001529'
+    } : ''
+  }
 
-  const LogoContainer = styled.div`
-      height: 48px;
-      /* background: rgba(255, 255, 255, 0.2); */
-      text-align: center;
-      margin: 8px;
-    `
-
-  const selectedKeys = () => {
-    const pathname = location.pathname.replace('/', ':')
-    return ['sider' + (pathname === ':' ? ':home' : pathname)]
+  const siderProps = {
+    trigger: null,
+    collapsible: true,
+    collapsed: collapsed.get,
+    theme: THEME.sider,
+    breakpoint: 'lg',
+    onBreakpoint: broken => { setDrawer(broken) },
+    style: drawer ? { display: 'none' } : {}
   }
 
   return (
-    <AntSider trigger={null} collapsible collapsed={collapsed.get}>
-      <LogoContainer><Logo /></LogoContainer>
-      <Menu theme='dark' mode='inline' defaultSelectedKeys={selectedKeys()}>
-        <Menu.Item key='sider:home' icon={<HomeOutlined />}>
-          <Link to='/'>{t('home')}</Link>
-        </Menu.Item>
-        {
-          user.roles.includes(ROLES.admin)
-            ? <Menu.Item key='sider:users' icon={<UsergroupAddOutlined />}>
-              <Link to='/users'>{t('users')}</Link>
-            </Menu.Item>
-            : null
-        }
-      </Menu>
+    <AntSider {...siderProps}>
+      <SiderMenu />
+      <Drawer {...drawerProps}><SiderMenu /></Drawer>
     </AntSider>
   )
 }
