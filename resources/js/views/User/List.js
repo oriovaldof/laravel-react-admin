@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '@components/Layout'
 import UserList from '@components/User/UserList'
 
-function Users () {
+function List () {
   return (
     <Layout>
       <UserList />
@@ -11,4 +11,4 @@ function Users () {
   )
 }
 
-export default Users
+export default List

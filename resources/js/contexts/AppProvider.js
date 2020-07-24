@@ -3,7 +3,7 @@ import React, {
 } from 'react'
 
 import { APP_COOKIES_PREFIX } from '@variables'
-import Loading from '@components/Loading/Loading'
+import Loading from '@components/Loading'
 
 const AppContextData = {
   loading: false,
