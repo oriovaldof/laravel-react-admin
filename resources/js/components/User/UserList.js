@@ -12,6 +12,8 @@ import { useAuth } from '@contexts/AuthProvider'
 import * as service from '@services/UserService'
 import { useTranslation } from 'react-i18next'
 
+import '@css/ant-responsive-table.css'
+
 function UserList () {
   const [form] = Form.useForm()
   const [users, setUsers] = useState([])
