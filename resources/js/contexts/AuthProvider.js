@@ -3,9 +3,9 @@ import React, {
 } from 'react'
 import Cookies from 'js-cookie'
 
-import { APP_COOKIES_PREFIX } from '~/variables'
+import { APP_COOKIES_PREFIX } from '@variables'
 
-import * as auth from '~/services/AuthService'
+import * as auth from '@services/AuthService'
 
 const AuthContextData = {
   pageLoading: true,

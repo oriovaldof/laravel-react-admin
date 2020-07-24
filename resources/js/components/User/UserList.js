@@ -3,14 +3,13 @@ import React, { useState, useEffect } from 'react'
 
 import { Row, Table, Tag, Modal, Button, Form, Popconfirm, message } from 'antd'
 import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons'
-import { ROLES } from '~/variables'
+import { ROLES } from '@variables'
 
 import UserForm from './UserForm'
-import LoadingContent from '~/components/Loading/LoadingContent'
-import { appContext } from '~/contexts/AppProvider'
-import { useAuth } from '~/contexts/AuthProvider'
-
-import * as service from '~/services/UserService'
+import LoadingContent from '@components/Loading/LoadingContent'
+import { appContext } from '@contexts/AppProvider'
+import { useAuth } from '@contexts/AuthProvider'
+import * as service from '@services/UserService'
 import { useTranslation } from 'react-i18next'
 
 function UserList () {
@@ -72,7 +71,7 @@ function UserList () {
         loading(true)
         const response = await service.update(user)
         loading(false)
-        setUsers(users.map(obj => (response.data.data.id = obj.id ? { ...response.data.data, key: response.data.data.id } : obj)))
+        setUsers(users.map(obj => (response.data.data.id === obj.id ? { ...response.data.data, key: response.data.data.id } : obj)))
         setModal({
           ...modal,
           visible: false

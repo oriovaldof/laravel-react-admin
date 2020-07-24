@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Login from '~/views/Login/Login'
+import Login from '@views/Login/Login'
 
 function PublicRoutes () {
   return (

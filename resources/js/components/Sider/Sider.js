@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import React, { useState } from 'react'
 import { Layout as AntLayout, Drawer } from 'antd'
-import SiderMenu from './SiderMenu'
+import SiderMenu from '@components/Sider/SiderMenu'
 
-import { appContext } from '~/contexts/AppProvider'
-import { THEME } from '~/variables'
+import { appContext } from '@contexts/AppProvider'
+import { THEME } from '@variables'
 
 function Sider () {
   const AntSider = AntLayout.Sider

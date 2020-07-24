@@ -3,7 +3,7 @@ import { withRouter, useHistory } from 'react-router-dom'
 import { Form, Input, Button, Checkbox, message, Layout, Card, Col, Row } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import { useAuth } from '~/contexts/AuthProvider'
+import { useAuth } from '@contexts/AuthProvider'
 
 import { Trans, useTranslation } from 'react-i18next'
 
@@ -45,7 +45,6 @@ function Login () {
           <Card title={t('title')} bordered={false}>
             <Form
               name='login-form'
-              className='login-form'
               initialValues={{ remember: true }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}

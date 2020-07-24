@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Layout from '~/components/Layout'
-import UserList from '~/components/User/UserList'
+import Layout from '@components/Layout'
+import UserList from '@components/User/UserList'
 
 function Users () {
   return (

@@ -14,7 +14,15 @@ const mix = require('laravel-mix');
 mix.webpackConfig({
     resolve: {
         alias: {
-            '~': path.join(__dirname, '/resources/js/'),
+            '~': path.resolve(__dirname, 'resources', 'js'),
+            '@components': path.resolve(__dirname, 'resources', 'js', 'components'),
+            '@contexts': path.resolve(__dirname, 'resources', 'js', 'contexts'),
+            '@services': path.resolve(__dirname, 'resources', 'js', 'services'),
+            '@locales': path.resolve(__dirname, 'resources', 'js', 'locales'),
+            '@routes': path.resolve(__dirname, 'resources', 'js', 'routes'),
+            '@views': path.resolve(__dirname, 'resources', 'js', 'views'),
+            '@variables': path.resolve(__dirname, 'resources', 'js', 'variables'),
+            '@css': path.resolve(__dirname, 'resources', 'css'),
         }
     }
 });

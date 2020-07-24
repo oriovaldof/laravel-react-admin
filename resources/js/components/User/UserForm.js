@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import { Form, Input, Select, Button } from 'antd'
 import { useTranslation } from 'react-i18next'
 
-import { ROLES } from '~/variables'
+import { ROLES } from '@variables'
 
 const layout = {
   labelCol: { span: 8 },
@@ -80,7 +80,6 @@ function UserForm ({ user, onFinish, form }) {
           : <Form.Item name='roles' label={t('role.label')} rules={[{ required: true }]}>
             <Select>
               {Object.entries(ROLES).map((value, key) => {
-                console.log(value[1])
                 return <Option key={key} value={value[1]}>{t('role.' + value[1])}</Option>
               })}
             </Select>

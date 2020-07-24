@@ -9,10 +9,10 @@ import {
   ProfileOutlined
 } from '@ant-design/icons'
 
-import { useAuth } from '~/contexts/AuthProvider'
-import { appContext } from '~/contexts/AppProvider'
+import { useAuth } from '@contexts/AuthProvider'
+import { appContext } from '@contexts/AppProvider'
 import { useTranslation } from 'react-i18next'
-import { THEME } from '~/variables'
+import { THEME } from '@variables'
 
 function Header (props) {
   const AntHeader = AntLayout.Header
@@ -46,7 +46,7 @@ function Header (props) {
   )
 
   return (
-    <AntHeader className='site-layout-background' style={{ padding: 0 }}>
+    <AntHeader style={{ padding: 0 }}>
       <Menu theme={THEME.header} mode='horizontal' selectable={false} triggerSubMenuAction='click' defaultSelectedKeys={selectedKeys()}>
         <Menu.Item key='0' onClick={() => collapsed.toggle()}>
           {collapsed.get ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}

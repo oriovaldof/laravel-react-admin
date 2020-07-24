@@ -2,8 +2,8 @@ import React, {
   useState, useEffect, createContext, useContext
 } from 'react'
 
-import { APP_COOKIES_PREFIX } from '~/variables'
-import Loading from '~/components/Loading/Loading'
+import { APP_COOKIES_PREFIX } from '@variables'
+import Loading from '@components/Loading/Loading'
 
 const AppContextData = {
   loading: false,

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Home from '~/views/Home/Home'
-import Profile from '~/views/User/Profile'
-import Users from '~/views/User/Users'
+import Home from '@views/Home/Home'
+import Profile from '@views/User/Profile'
+import Users from '@views/User/Users'
 
 function PrivateRoutes () {
   return (

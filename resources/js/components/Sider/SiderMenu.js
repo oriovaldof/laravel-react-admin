@@ -8,8 +8,8 @@ import {
   UsergroupAddOutlined
 } from '@ant-design/icons'
 
-import { useAuth } from '~/contexts/AuthProvider'
-import { ROLES, THEME } from '~/variables'
+import { useAuth } from '@contexts/AuthProvider'
+import { ROLES, THEME } from '@variables'
 import { useTranslation } from 'react-i18next'
 
 function SiderMenu () {
