@@ -43,7 +43,7 @@
       "types": {
         "email": "Este não é um e-mail válido!"
       },
-      "password-conformation": "As senhas não coincidem!"
+      "password-confirmation": "As senhas não coincidem!"
     }
   },
   "login": {
