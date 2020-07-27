@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 //Auth::routes();
 
 Route::group(['middleware' => ['json.response']], function() {
-    Route::view('/{path?}', 'app');
+    Route::view('/{path?}', 'app')->where('path', '.*');
 });
