@@ -6,10 +6,8 @@ import Login from '@views/Login'
 function PublicRoutes () {
   return (
     <Switch>
-      {/* <Route path='/register' component={Register}/> */}
-      <Route path='/Login' exact component={Login} />
+      <Route exact path='/login' component={Login} />
       <Route render={() => <Redirect to='/login' />} />
-      {/* <Route component={NotFound}/> */}
     </Switch>
   )
 }

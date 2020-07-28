@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { withRouter, useHistory } from 'react-router-dom'
+import { Link, withRouter, useHistory } from 'react-router-dom'
 import { Form, Input, Button, Checkbox, message, Layout, Card, Col, Row } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
@@ -34,10 +34,6 @@ function Login () {
     })
   }
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo)
-  }
-
   return (
     <Layout>
       <Row gutter={8} type='flex' justify='center' align='middle' style={{ minHeight: '100vh' }}>
@@ -47,7 +43,6 @@ function Login () {
               name='login-form'
               initialValues={{ remember: true }}
               onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
             >
               <Form.Item
                 name='email'
@@ -80,9 +75,9 @@ function Login () {
                   <Checkbox>{t('remember-me')}</Checkbox>
                 </Form.Item>
 
-                <a style={{ ...forgotStyle }} href=''>
+                <Link to='/forgot' style={{ ...forgotStyle }}>
                   {t('forgot-password')}
-                </a>
+                </Link>
               </Form.Item>
 
               <Form.Item>

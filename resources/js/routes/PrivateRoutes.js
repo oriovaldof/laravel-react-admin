@@ -1,18 +1,25 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
+import Layout from '@components/Layout'
 import Home from '@views/Home'
 import Profile from '@views/User/Profile'
 import Users from '@views/User/List'
+import NotFound from '@views/NotFound'
 
 function PrivateRoutes () {
   return (
-    <Switch>
-      <Route path='/login' exact render={() => <Redirect to='/' />} />
-      <Route path='/users' component={Users} />
-      <Route path='/profile' component={Profile} />
-      <Route path='/' component={Home} />
-    </Switch>
+    <>
+      <Route path='/login' render={() => <Redirect to='/' />} />
+      <Layout>
+        <Switch>
+          <Route path='/users' component={Users} />
+          <Route path='/profile' component={Profile} />
+          <Route exact path='/' component={Home} />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </>
   )
 }
 

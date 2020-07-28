@@ -19,7 +19,11 @@
       },
       "error": {
         "default": "An error has occurred. Please try again later.",
-        "logged-out": "An error occurred while trying to logout. Please try again later."
+        "logged-out": "An error occurred while trying to logout. Please try again later.",
+        "required": "{{ label }} is required!",
+        "types": {
+          "email": "This is not a valid e-mail!"
+        }
       },
       "confirm": "Are you sure you want to {{ action }} {{ this }} {{ entity }}?"
     }
@@ -51,7 +55,6 @@
     "remember-me": "Remember me",
     "forgot-password": "Forgot password",
     "login": "Log in",
-    "or": "Or",
     "register": "Or <a>Register now!</a>",
     "input": {
       "email": {
@@ -66,6 +69,18 @@
           "required": "Please input your Password!"
         }
       }
+    }
+  },
+  "forgot-password": {
+    "title": "Forgot your password?",
+    "subtitle": "Don't worry! Just fill in your e-mail and we'll send you a link to reset your password. ;)",
+    "input": {
+      "label": "E-mail Address"
+    },
+    "submit": "Reset Password",
+    "back-to-login": "Or <Link>Back to Login</Link>",
+    "message": {
+      "success": "Your password has been reset! We have emailed your password reset link! ;)"
     }
   },
   "header": {

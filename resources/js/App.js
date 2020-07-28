@@ -32,7 +32,7 @@ function App () {
       <I18nextProvider i18n={i18next}>
         <AuthProvider>
           <AppProvider>
-            <Route component={Router} />
+            <Router />
           </AppProvider>
         </AuthProvider>
       </I18nextProvider>

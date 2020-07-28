@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { message } from 'antd'
-import Layout from '@components/Layout'
-import UserForm from '@components/User/UserForm'
+import Form from '@components/User/Form'
 
 import { updateProfile } from '@services/UserService'
 import { useAuth } from '@contexts/AuthProvider'
@@ -30,11 +29,7 @@ function Profile () {
     }
   }
 
-  return (
-    <Layout>
-      <UserForm user={user} onFinish={onFinish} />
-    </Layout>
-  )
+  return <Form user={user} onFinish={onFinish} />
 }
 
 export default Profile

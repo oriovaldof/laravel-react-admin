@@ -2,7 +2,7 @@
 /* eslint-disable no-template-curly-in-string */
 import React, { useEffect } from 'react'
 
-import { Form, Input, Select, Button } from 'antd'
+import { Form as AntForm, Input, Select, Button } from 'antd'
 import { useTranslation } from 'react-i18next'
 
 import { ROLES } from '@variables'
@@ -12,14 +12,14 @@ const layout = {
   wrapperCol: { span: 8 }
 }
 
-function UserForm ({ user, onFinish, form }) {
+function Form ({ user, onFinish, form }) {
   const { Option } = Select
-  const { t } = useTranslation('user')
+  const { t } = useTranslation(['user', 'common'])
 
   const validateMessages = {
-    required: t('error.required', { label: '${label}' }),
+    required: t('common:message.error.required', { label: '${label}' }),
     types: {
-      email: t('error.types.email')
+      email: t('common:message.error.types.email')
     }
   }
 
@@ -28,7 +28,7 @@ function UserForm ({ user, onFinish, form }) {
       if ((!getFieldValue('password') && !value) || getFieldValue('password') === value) {
         return Promise.resolve()
       }
-      return Promise.reject(new Error(t('error.password-confirmation')))
+      return Promise.reject(new Error(t('user:error.password-confirmation')))
     }
   })
 
@@ -39,32 +39,32 @@ function UserForm ({ user, onFinish, form }) {
   }, [user])
 
   return (
-    <Form {...layout} validateMessages={validateMessages} onFinish={onFinish} initialValues={user ? { ...user } : {}} form={form}>
-      <Form.Item
+    <AntForm {...layout} validateMessages={validateMessages} onFinish={onFinish} initialValues={user ? { ...user } : {}} form={form}>
+      <AntForm.Item
         name='name'
         label={t('name')}
         rules={[{ required: true }]}
       >
         <Input minLength={3} maxLength={40} />
-      </Form.Item>
+      </AntForm.Item>
 
-      <Form.Item
+      <AntForm.Item
         name='email'
         label={t('email')}
         rules={[{ required: true, type: 'email' }]}
       >
         <Input disabled={!!user} />
-      </Form.Item>
+      </AntForm.Item>
 
-      <Form.Item
+      <AntForm.Item
         name='password'
         label={t('password')}
         rules={[(user ? {} : { required: true })]}
       >
         <Input.Password placeholder='********' minLength={6} maxLength={16} />
-      </Form.Item>
+      </AntForm.Item>
 
-      <Form.Item
+      <AntForm.Item
         name='password_confirmation'
         label={t('password-confirmation')}
         rules={[
@@ -73,28 +73,28 @@ function UserForm ({ user, onFinish, form }) {
         ]}
       >
         <Input.Password placeholder='********' minLength={6} maxLength={16} />
-      </Form.Item>
+      </AntForm.Item>
 
       {
         !form ? null
-          : <Form.Item name='roles' label={t('role.label')} rules={[{ required: true }]}>
+          : <AntForm.Item name='roles' label={t('role.label')} rules={[{ required: true }]}>
             <Select>
               {Object.entries(ROLES).map((value, key) => {
                 return <Option key={key} value={value[1]}>{t('role.' + value[1])}</Option>
               })}
             </Select>
-          </Form.Item>
+          </AntForm.Item>
       }
 
       {
         form ? null
-          : <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+          : <AntForm.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
             <Button type='primary' htmlType='submit'>{t('common:save')}</Button>
-          </Form.Item>
+          </AntForm.Item>
       }
-    </Form>
+    </AntForm>
 
   )
 }
 
-export default UserForm
+export default Form

@@ -19,7 +19,11 @@
       },
       "error": {
         "default": "Ocorreu um erro. Por favor, tente novamente mais tarde.",
-        "logged-out": "Ocorreu um erro ao tentar desconectar. Por favor, tente novamente mais tarde."
+        "logged-out": "Ocorreu um erro ao tentar desconectar. Por favor, tente novamente mais tarde.",
+        "required": "{{ label }} é obrigatório!",
+        "types": {
+          "email": "Este não é um e-mail válido!"
+        }
       },
       "confirm": "Tem certeza que deseja {{ action }} {{ this }} {{ entity }}?"
     }
@@ -39,10 +43,6 @@
       "ROLE_SUPPORT": "Suporte"
     },
     "error": {
-      "required": "{{ label }} é obrigatório!",
-      "types": {
-        "email": "Este não é um e-mail válido!"
-      },
       "password-confirmation": "As senhas não coincidem!"
     }
   },
@@ -51,8 +51,7 @@
     "remember-me": "Lembrar-me",
     "forgot-password": "Esqueci a Senha",
     "login": "Entrar",
-    "or": "Ou",
-    "register": "Or <a>Registrar-se Agora!</a>",
+    "register": "Ou <a>Registrar-se Agora!</a>",
     "input": {
       "email": {
         "placeholder": "E-mail",
@@ -66,6 +65,18 @@
           "required": "Por favor, insira sua Senha!"
         }
       }
+    }
+  },
+  "forgot-password": {
+    "title": "Esqueceu sua senha?",
+    "subtitle": "Não se preocupe! Apenas preencha seu e-mail e nós te enviaremos um link para redefini-la. ;)",
+    "input": {
+      "label": "Endereço de E-mail"
+    },
+    "submit": "Redefinir senha",
+    "back-to-login": "Ou <Link>Voltar para o Login</Link>",
+    "message": {
+      "success": "Sua senha foi redefinida! Nós te enviamos um e-mail com o link para alterá-la. ;)"
     }
   },
   "header": {
