@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libonig-dev \
-    libzip-dev
+    libzip-dev \
+    ruby-full
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -39,6 +40,10 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
 #---------- DEV settings ----------
+
+# Install Mail Catcher
+RUN apt-get install libsqlite3-dev
+RUN gem install mailcatcher
 
 # Add user for laravel application
 RUN groupadd -g 1000 www
