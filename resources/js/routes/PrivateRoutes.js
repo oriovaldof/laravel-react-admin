@@ -6,6 +6,7 @@ import Home from '@views/Home'
 import Profile from '@views/User/Profile'
 import Users from '@views/User/List'
 import NotFound from '@views/NotFound'
+import Safra from '@views/Safra'
 
 function PrivateRoutes () {
   return (
@@ -14,6 +15,7 @@ function PrivateRoutes () {
       <Layout>
         <Switch>
           <Route path='/users' component={Users} />
+          <Route path='/safra' component={Safra} />
           <Route path='/profile' component={Profile} />
           <Route exact path='/' component={Home} />
           <Route component={NotFound} />

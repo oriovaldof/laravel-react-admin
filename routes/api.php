@@ -34,6 +34,7 @@ Route::group(['middleware' => ['json.response']], function() {
         Route::middleware('check.user.role:' . \App\Role\UserRole::ROLE_ADMIN)->group(function() {
             Route::apiResource('/users', 'UserController');
         });
+        Route::apiResource('/safra', 'SafraController');
 
         Route::put('/profile', 'UserController@updateProfile');
     });
